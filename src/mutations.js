@@ -42,13 +42,12 @@ const CompanyMutationType = new GraphQLObjectType({
 		  	 resolve: (source, { input }) => {
 		  	 	console.log(input);
 
-		  	 	var item = Department.findById( input.id );
-		  	 	item.name = input.name;
-		  	 	item.description = input.description;
+		  	 	var item = Department.findByIdAndUpdate( input.id, {
+		  	 		name: input.name,
+		  	 		description: input.description
+		  	 	});
 
-		  	 	item.save();
-
-		  	 	return item;
+		  	 	return input;
 		  	 }
 	  	},
 	  	deleteDepartment: {
