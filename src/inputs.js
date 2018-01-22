@@ -92,6 +92,21 @@ const JobsPositionDeleteType = new GraphQLInputObjectType({
 	}
 });
 
+const EmployeeCreateType = new GraphQLInputObjectType({
+	name: "EmployeeCreateType",
+	type: EmployeeType,
+	fields: {
+		
+		name: {
+			type: new GraphQLNonNull(GraphQLString)
+		},
+		email: {
+			type: GraphQLString
+		}
+	
+	}
+});
+
 module.exports = {
 	DepartmentCreateType: DepartmentCreateType,
 	DepartmentUpdateType: DepartmentUpdateType,
