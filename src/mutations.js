@@ -8,7 +8,7 @@ let {
 } = require("graphql");
 
 let { JobsPositionType, DepartmentType, EmployeeType} = require("./objects");
-let { DepartmentCreateType, DepartmentUpdateType, DepartmentDeleteType, JobsPositionCreateType } = require("./inputs")
+let { DepartmentCreateType, DepartmentUpdateType, DepartmentDeleteType, JobsPositionCreateType, JobsPositionUpdateType, JobsPositionDeleteType } = require("./inputs")
 
 // Build GraphQL Mutation
 
@@ -84,6 +84,38 @@ const CompanyMutationType = new GraphQLObjectType({
 		  	 	return newItem;
 		  	 }
 	  	},
+	  	updateJobsPosition: {
+		  	 type: JobsPositionType,
+		  	 args: {
+		  	 	input: { type: new GraphQLNonNull (JobsPositionUpdateType) }
+		  	 },
+		  	 resolve: (source, { input }) => {
+		  	 	console.log(input);
+
+		  	 	var item = JobsPosition.findByIdAndUpdate( input.id, {
+		  	 		name: input.name,
+		  	 		description: input.description
+		  	 	});
+
+		  	 	return input;
+		  	 }
+	  	},
+	  	deleteJobsPosition: {
+		  	 type: JobsPositionType,
+		  	 args: {
+		  	 	input: { type: new GraphQLNonNull (JobsPositionDeleteType) }
+		  	 },
+		  	 resolve: (source, { input }) => {
+		  	 	console.log(input);
+		  	 	
+		  	 	JobsPosition.findByIdAndRemove( input.id, function(err, row){
+		  	 		console.log(err);
+		  	 		console.log(row);
+		  	 	});
+		  	 	
+	  	 		return { id: 1 }
+		  	 }	
+	  	},	
 	}
 });
 
