@@ -66,9 +66,37 @@ const JobsPositionCreateType = new GraphQLInputObjectType({
 	}
 });
 
+const JobsPositionUpdateType = new GraphQLInputObjectType({
+	name: "JobsPositionUpdateType",
+	type: JobsPositionType,
+	fields: {
+		id: {
+			type: new GraphQLNonNull(GraphQLString)
+		},
+		name: {
+			type: new GraphQLNonNull(GraphQLString)
+		},
+		description: {
+			type: GraphQLString
+		}
+	}
+});
+
+const JobsPositionDeleteType = new GraphQLInputObjectType({
+	name: "JobsPositionDeleteType",
+	type: JobsPositionType,
+	fields: {
+		id: {
+			type: new GraphQLNonNull(GraphQLString)
+		}
+	}
+});
+
 module.exports = {
 	DepartmentCreateType: DepartmentCreateType,
 	DepartmentUpdateType: DepartmentUpdateType,
 	DepartmentDeleteType: DepartmentDeleteType,
-	JobsPositionCreateType: JobsPositionCreateType
+	JobsPositionCreateType: JobsPositionCreateType,
+	JobsPositionUpdateType: JobsPositionUpdateType,
+	JobsPositionDeleteType: JobsPositionDeleteType,
 };
