@@ -8,7 +8,10 @@ let {
 } = require("graphql");
 
 let { JobsPositionType, DepartmentType, EmployeeType} = require("./objects");
-let { DepartmentCreateType, DepartmentUpdateType, DepartmentDeleteType, JobsPositionCreateType, JobsPositionUpdateType, JobsPositionDeleteType } = require("./inputs")
+let { DepartmentCreateType, DepartmentUpdateType, DepartmentDeleteType, 
+		JobsPositionCreateType, JobsPositionUpdateType, JobsPositionDeleteType, 
+		EmployeeCreateType, EmployeeUpdateType, EmployeeDeleteType, 
+	} = require("./inputs")
 
 // Build GraphQL Mutation
 
@@ -109,6 +112,64 @@ const CompanyMutationType = new GraphQLObjectType({
 		  	 	console.log(input);
 		  	 	
 		  	 	JobsPosition.findByIdAndRemove( input.id, function(err, row){
+		  	 		console.log(err);
+		  	 		console.log(row);
+		  	 	});
+		  	 	
+	  	 		return { id: 1 }
+		  	 }	
+	  	},	
+	  	createEmployee: {
+		  	 type: EmployeeType,
+		  	 args: {
+		  	 	input: { type: new GraphQLNonNull (EmployeeCreateType) }
+		  	 },
+		  	 resolve: (source, { input }) => {
+		  	 	console.log(input);
+
+		  	 	var newItem = new Employee({
+		  	 		name: input.name,
+		  	 		email: input.email,
+		  	 		gender: input.gender,
+		  	 		address: input.gender,
+		  	 		jobsPosition: input.jobsPosition,
+		  	 		department: input.department
+		  	 	});
+
+		  	 	newItem.save();
+
+		  	 	return newItem;
+		  	 }
+	  	},
+	  	updateEmployee: {
+		  	 type: EmployeeType,
+		  	 args: {
+		  	 	input: { type: new GraphQLNonNull (EmployeeUpdateType) }
+		  	 },
+		  	 resolve: (source, { input }) => {
+		  	 	console.log(input);
+
+		  	 	var item = Employee.findByIdAndUpdate( input.id, {
+		  	 		name: input.name,
+		  	 		email: input.email,
+		  	 		gender: input.gender,
+		  	 		address: input.gender,
+		  	 		jobsPosition: input.jobsPosition,
+		  	 		department: input.department
+		  	 	});
+
+		  	 	return input;
+		  	 }
+	  	},
+	  	deleteEmployee: {
+		  	 type: EmployeeType,
+		  	 args: {
+		  	 	input: { type: new GraphQLNonNull (EmployeeDeleteType) }
+		  	 },
+		  	 resolve: (source, { input }) => {
+		  	 	console.log(input);
+		  	 	
+		  	 	Employee.findByIdAndRemove( input.id, function(err, row){
 		  	 		console.log(err);
 		  	 		console.log(row);
 		  	 	});

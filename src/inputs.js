@@ -92,6 +92,76 @@ const JobsPositionDeleteType = new GraphQLInputObjectType({
 	}
 });
 
+const EmployeeCreateType = new GraphQLInputObjectType({
+	name: "EmployeeCreateType",
+	type: EmployeeType,
+	fields: {
+		
+		name: {
+			type: new GraphQLNonNull(GraphQLString)
+		},
+		email: {
+			type: GraphQLString
+		},
+		gender: {
+			type: GraphQLString
+		},
+		address: {
+			type: GraphQLString
+		},
+		jobsPosition: {
+			type: new GraphQLNonNull(GraphQLString)
+		},
+		department: {
+			type: new GraphQLNonNull(GraphQLString)
+		}
+	
+	}
+});
+
+const EmployeeUpdateType = new GraphQLInputObjectType({
+	name: "EmployeeUpdateType",
+	type: EmployeeType,
+	fields: {
+		
+		id : {
+			type: new GraphQLNonNull(GraphQLString)
+		},
+		name: {
+			type: new GraphQLNonNull(GraphQLString)
+		},
+		email: {
+			type: GraphQLString
+		},
+		gender: {
+			type: GraphQLString
+		},
+		address: {
+			type: GraphQLString
+		},
+		jobsPosition: {
+			type: new GraphQLNonNull(GraphQLString)
+		},
+		department: {
+			type: new GraphQLNonNull(GraphQLString)
+		}
+	
+	}
+});
+
+const EmployeeDeleteType = new GraphQLInputObjectType({
+	name: "EmployeeDeleteType",
+	type: EmployeeType,
+	fields: {
+		
+		id : {
+			type: new GraphQLNonNull(GraphQLString)
+		},
+	
+	}
+});
+
+
 module.exports = {
 	DepartmentCreateType: DepartmentCreateType,
 	DepartmentUpdateType: DepartmentUpdateType,
@@ -99,4 +169,7 @@ module.exports = {
 	JobsPositionCreateType: JobsPositionCreateType,
 	JobsPositionUpdateType: JobsPositionUpdateType,
 	JobsPositionDeleteType: JobsPositionDeleteType,
+	EmployeeCreateType: EmployeeCreateType,
+	EmployeeUpdateType: EmployeeUpdateType,
+	EmployeeDeleteType: EmployeeDeleteType,
 };
