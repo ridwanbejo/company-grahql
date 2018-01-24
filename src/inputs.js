@@ -66,9 +66,110 @@ const JobsPositionCreateType = new GraphQLInputObjectType({
 	}
 });
 
+const JobsPositionUpdateType = new GraphQLInputObjectType({
+	name: "JobsPositionUpdateType",
+	type: JobsPositionType,
+	fields: {
+		id: {
+			type: new GraphQLNonNull(GraphQLString)
+		},
+		name: {
+			type: new GraphQLNonNull(GraphQLString)
+		},
+		description: {
+			type: GraphQLString
+		}
+	}
+});
+
+const JobsPositionDeleteType = new GraphQLInputObjectType({
+	name: "JobsPositionDeleteType",
+	type: JobsPositionType,
+	fields: {
+		id: {
+			type: new GraphQLNonNull(GraphQLString)
+		}
+	}
+});
+
+const EmployeeCreateType = new GraphQLInputObjectType({
+	name: "EmployeeCreateType",
+	type: EmployeeType,
+	fields: {
+		
+		name: {
+			type: new GraphQLNonNull(GraphQLString)
+		},
+		email: {
+			type: GraphQLString
+		},
+		gender: {
+			type: GraphQLString
+		},
+		address: {
+			type: GraphQLString
+		},
+		jobsPosition: {
+			type: new GraphQLNonNull(GraphQLString)
+		},
+		department: {
+			type: new GraphQLNonNull(GraphQLString)
+		}
+	
+	}
+});
+
+const EmployeeUpdateType = new GraphQLInputObjectType({
+	name: "EmployeeUpdateType",
+	type: EmployeeType,
+	fields: {
+		
+		id : {
+			type: new GraphQLNonNull(GraphQLString)
+		},
+		name: {
+			type: new GraphQLNonNull(GraphQLString)
+		},
+		email: {
+			type: GraphQLString
+		},
+		gender: {
+			type: GraphQLString
+		},
+		address: {
+			type: GraphQLString
+		},
+		jobsPosition: {
+			type: new GraphQLNonNull(GraphQLString)
+		},
+		department: {
+			type: new GraphQLNonNull(GraphQLString)
+		}
+	
+	}
+});
+
+const EmployeeDeleteType = new GraphQLInputObjectType({
+	name: "EmployeeDeleteType",
+	type: EmployeeType,
+	fields: {
+		
+		id : {
+			type: new GraphQLNonNull(GraphQLString)
+		},
+	
+	}
+});
+
+
 module.exports = {
 	DepartmentCreateType: DepartmentCreateType,
 	DepartmentUpdateType: DepartmentUpdateType,
 	DepartmentDeleteType: DepartmentDeleteType,
-	JobsPositionCreateType: JobsPositionCreateType
+	JobsPositionCreateType: JobsPositionCreateType,
+	JobsPositionUpdateType: JobsPositionUpdateType,
+	JobsPositionDeleteType: JobsPositionDeleteType,
+	EmployeeCreateType: EmployeeCreateType,
+	EmployeeUpdateType: EmployeeUpdateType,
+	EmployeeDeleteType: EmployeeDeleteType,
 };
