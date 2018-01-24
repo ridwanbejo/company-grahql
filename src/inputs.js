@@ -102,10 +102,65 @@ const EmployeeCreateType = new GraphQLInputObjectType({
 		},
 		email: {
 			type: GraphQLString
+		},
+		gender: {
+			type: GraphQLString
+		},
+		address: {
+			type: GraphQLString
+		},
+		jobsPosition: {
+			type: new GraphQLNonNull(GraphQLString)
+		},
+		department: {
+			type: new GraphQLNonNull(GraphQLString)
 		}
 	
 	}
 });
+
+const EmployeeUpdateType = new GraphQLInputObjectType({
+	name: "EmployeeCreateType",
+	type: EmployeeType,
+	fields: {
+		
+		id : {
+			type: new GraphQLNonNull(GraphQLString)
+		},
+		name: {
+			type: new GraphQLNonNull(GraphQLString)
+		},
+		email: {
+			type: GraphQLString
+		},
+		gender: {
+			type: GraphQLString
+		},
+		address: {
+			type: GraphQLString
+		},
+		jobsPosition: {
+			type: new GraphQLNonNull(GraphQLString)
+		},
+		department: {
+			type: new GraphQLNonNull(GraphQLString)
+		}
+	
+	}
+});
+
+const EmployeeDeleteType = new GraphQLInputObjectType({
+	name: "EmployeeCreateType",
+	type: EmployeeType,
+	fields: {
+		
+		id : {
+			type: new GraphQLNonNull(GraphQLString)
+		},
+	
+	}
+});
+
 
 module.exports = {
 	DepartmentCreateType: DepartmentCreateType,
@@ -114,4 +169,7 @@ module.exports = {
 	JobsPositionCreateType: JobsPositionCreateType,
 	JobsPositionUpdateType: JobsPositionUpdateType,
 	JobsPositionDeleteType: JobsPositionDeleteType,
+	EmployeeCreateType: EmployeeCreateType,
+	EmployeeUpdateType: EmployeeUpdateType,
+	EmployeeDeleteType: EmployeeDeleteType,
 };
