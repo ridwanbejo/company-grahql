@@ -120,7 +120,7 @@ const EmployeeCreateType = new GraphQLInputObjectType({
 });
 
 const EmployeeUpdateType = new GraphQLInputObjectType({
-	name: "EmployeeCreateType",
+	name: "EmployeeUpdateType",
 	type: EmployeeType,
 	fields: {
 		
@@ -150,7 +150,7 @@ const EmployeeUpdateType = new GraphQLInputObjectType({
 });
 
 const EmployeeDeleteType = new GraphQLInputObjectType({
-	name: "EmployeeCreateType",
+	name: "EmployeeDeleteType",
 	type: EmployeeType,
 	fields: {
 		
