@@ -1,15 +1,18 @@
 var { graphql, buildSchema } = require("graphql");
 var express = require('express');
 var graphqlHTTP = require('express-graphql');
-var jwt = require("express-jwt");
+var jwt = require("jsonwebtoken"); 
+var exJwt = require("express-jwt");
 
 const schema = require("./src/schemas.js");
 
 var app = express();
 
-// jwt({secret: "secret12345"}),
+app.post('/auth-token', function(req, res){
 
-app.use('/graphql',  graphqlHTTP({
+});
+
+app.use('/graphql', exJwt({secret: "secret12345"}), graphqlHTTP({
 	schema: schema,
 	graphiql: true
 }));
